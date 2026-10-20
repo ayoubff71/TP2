@@ -1,0 +1,21 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container #cont{
+    width: 800px;
+    height: 30px;
+    border: 2px black solid;
+    border-radius: 4px;
+}
+
+.container #cont #barre{
+    background-color: green;
+    width: 0;
+    height: 30px;
+    border-radius: 4px;
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag and Drop</title>
+
+    <style>
+        .container {
+            display: flex;
+            gap: 30px;
+        }
+
+        .card {
+            width: 300px;
+            height: 300px;
+            border: 2px solid black;
+            padding: 10px;
+        }
+
+        .element {
+            background-color: lightblue;
+            padding: 15px;
+            margin: 10px;
+            cursor: grab;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div id="card1" class="card">
+            <h2>Source</h2>
+
+            <div id="ele1" class="element" draggable="true">
+                Élément 1
+            </div>
+
+            <div id="ele2" class="element" draggable="true">
+                Élément 2
+            </div>
+
+            <div id="ele3" class="element" draggable="true">
+                Élément 3
+            </div>
+        </div>
+
+        <div id="card2" class="card">
+            <h2>Destination</h2>
+        </div>
+
+    </div>
+
+    <script>
+
+        let card2 = document.getElementById("card2");
+
+        let ele1 = document.getElementById("ele1");
+        let ele2 = document.getElementById("ele2");
+        let ele3 = document.getElementById("ele3");
+
+        let elements = [ele1, ele2, ele3];
+
+        let elementDeplace = null;
+
+        // Détecter quel élément commence à être déplacé
+        elements.forEach(function(element) {
+
+            element.addEventListener("dragstart", function() {
+
+                elementDeplace = element;
+
+            });
+
+        });
+
+        // Autoriser le dépôt dans card2
+        card2.addEventListener("dragover", function(event) {
+
+            event.preventDefault();
+
+        });
+
+        // Quand on dépose l'élément
+        card2.addEventListener("drop", function(event) {
+
+            if (elementDeplace !== null) {
+
+                card2.appendChild(elementDeplace);
+
+                elementDeplace = null;
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

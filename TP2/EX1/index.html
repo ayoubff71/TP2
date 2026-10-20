@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="container"></div>
+    <h1 class="nom">hello i am a sotfware engineer</h1>
+    <button id="btn">CHANGE COLOR</button>
+    <button id="afficherBtn">afficher/masquer</button>
+
+    
+    <p id="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, esse rerum? Cupiditate, quo corrupti ipsa ut quas illo distinctio perferendis eos unde, ipsam cum vel at error magnam totam laboriosam?</p>
+    <hr>
+    <h2>Formulaire de validation</h2>
+    <form>
+        <label>Nom:</label>
+        <input type="text" id="nom" required><br><br>
+        <label >E-mail</label>
+        <input type="text" id="email" required><br><br>
+        <button type="button" id="subBtn">Submit</button>
+    </form>
+    <script language="javascript">
+
+        let nom = document.getElementsByClassName("nom");
+        
+        let div = document.getElementsByClassName("container");
+        let isWhite = true;
+        let isAfficher = false;
+        let para = document.getElementById("para");
+        let btn = document.getElementById("btn");
+        let afficherBtn = document.getElementById("afficherBtn");
+
+        btn.onclick = function(){
+            if(isWhite){
+                nom[0].style.color = "red";
+                div[0].style.backgroundColor = "blue";
+                isWhite = false;
+            }
+            
+            else{
+                nom[0].style.color = "black";
+                div[0].style.backgroundColor = "white";
+                isWhite = true;
+            }
+        }
+        afficherBtn.onclick = function(){
+            if(!isAfficher){
+                para.textContent = " ";
+                isAfficher = true;
+            }
+            else{
+                para.textContent ="Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, esse rerum? Cupiditate, quo corrupti ipsa ut quas illo distinctio perferendis eos unde, ipsam cum vel at error magnam totam laboriosam?";
+                isAfficher =false;
+            }
+        }
+
+
+        
+        let subBtn = document.getElementById("subBtn");
+        subBtn.onclick = function(){
+            let mail = document.getElementById("email").value.trim();
+            let nom = document.getElementById("nom").value.trim();
+            if(nom === "" && mail === ""){
+                window.alert("name and email are required!");
+            }
+            else if(nom === "" || mail === ""){
+                window.alert("name and email are both required!");
+            }
+            else{
+                window.alert("bonjour " + nom);
+            }
+        }
+    </script>
+</body>
+</html>
